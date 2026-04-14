@@ -1492,6 +1492,12 @@ export default function App() {
     if (contentRef.current) contentRef.current.scrollTo(0, 0);
   }, [page]);
 
+  useEffect(() => {
+    const handleOpenAdmin = () => { setIsAdmin(true); setPage("admin-dashboard"); };
+    window.addEventListener("openAdmin", handleOpenAdmin);
+    return () => window.removeEventListener("openAdmin", handleOpenAdmin);
+  }, []);
+
   const registerForClass = useCallback((classId) => {
     setClassRegistrations(prev => ({ ...prev, [classId]: (prev[classId] || 0) + 1 }));
   }, []);

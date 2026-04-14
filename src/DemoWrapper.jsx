@@ -78,6 +78,7 @@ export default function DemoWrapper() {
       }}>
         {config.salesCards.map((card, i) => {
           const Icon = iconMap[card.icon] || Star;
+          const isAdminCard = card.icon === "shield";
           return (
             <div key={i} style={{
               background: "#fff", borderRadius: 14, padding: "24px 22px",
@@ -85,7 +86,17 @@ export default function DemoWrapper() {
             }}>
               <Icon size={28} color={ac} style={{ marginBottom: 12 }} />
               <h3 style={{ fontSize: 18, fontWeight: 700, color: "#1a1e2e", margin: "0 0 8px", fontFamily: "'Cormorant Garamond', serif" }}>{card.title}</h3>
-              <p style={{ fontSize: 14, color: "#5a5a5a", lineHeight: 1.55, margin: 0 }}>{card.desc}</p>
+              <p style={{ fontSize: 14, color: "#5a5a5a", lineHeight: 1.55, margin: isAdminCard ? "0 0 14px" : 0 }}>{card.desc}</p>
+              {isAdminCard && (
+                <button onClick={() => window.dispatchEvent(new CustomEvent("openAdmin"))} style={{
+                  width: "100%", padding: "10px 0", borderRadius: 8, border: "none",
+                  background: ac, color: "#fff", fontWeight: 700, fontSize: 14,
+                  cursor: "pointer", fontFamily: "'Cormorant Garamond', serif",
+                  letterSpacing: "0.03em",
+                }}>
+                  Open Admin
+                </button>
+              )}
             </div>
           );
         })}
