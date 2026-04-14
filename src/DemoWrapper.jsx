@@ -60,14 +60,12 @@ export default function DemoWrapper() {
 
       {/* ——— CENTER: PHONE FRAME ——— */}
       <div style={{
-        width: 390, flexShrink: 0, position: "relative",
+        width: 390, height: 844, flexShrink: 0, position: "relative",
+        overflow: "hidden", borderRadius: 40, background: "white",
         boxShadow: "0 8px 40px rgba(0,0,0,.12), 0 2px 12px rgba(0,0,0,.06)",
-        borderRadius: 0, overflow: "hidden", height: "100vh",
-        transform: "translateZ(0)", // contain fixed elements
+        transform: "translateZ(0)", alignSelf: "center",
       }}>
-        <div style={{ height: "100%", overflow: "auto" }}>
-          <App />
-        </div>
+        <App />
       </div>
 
       {/* ——— RIGHT SIDEBAR ——— */}
