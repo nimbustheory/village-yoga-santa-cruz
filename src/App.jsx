@@ -1574,8 +1574,8 @@ export default function App() {
     return (
       <AppContext.Provider value={{ page, setPage, classRegistrations, registerForClass, openReservation, feedCelebrations, celebrateFeed }}>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <div style={{ position: "fixed", inset: 0, zIndex: 9999, display: "flex", fontFamily: "'DM Sans', system-ui, sans-serif", background: "#f3f4f6", color: "#1f2937" }}>
-          <aside style={{ width: 240, background: "#ffffff", borderRight: "1px solid #e5e7eb", display: "flex", flexDirection: "column", flexShrink: 0, height: "100vh", zIndex: 20 }}>
+        <div style={{ display: "flex", width: "100%", height: "100%", fontFamily: "'DM Sans', system-ui, sans-serif", background: "#f3f4f6", color: "#1f2937" }}>
+          <aside style={{ width: 240, background: "#ffffff", borderRight: "1px solid #e5e7eb", display: "flex", flexDirection: "column", flexShrink: 0, height: "100%", zIndex: 20 }}>
             <div style={{ padding: 16, borderBottom: "1px solid #e5e7eb" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <div style={{ width: 38, height: 38, borderRadius: 10, background: T.accent, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, color: "#fff" }}>{STUDIO_CONFIG.logoMark}</div>
@@ -1599,7 +1599,7 @@ export default function App() {
               })}
             </nav>
             <div style={{ borderTop: "1px solid #e5e7eb", padding: "10px 8px" }}>
-              <button onClick={() => { setIsAdmin(false); setPage("home"); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 8, border: "none", background: "transparent", color: "#6b7280", fontSize: 13, cursor: "pointer", textAlign: "left" }}>
+              <button onClick={() => { setIsAdmin(false); setPage("home"); window.dispatchEvent(new CustomEvent("closeAdmin")); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 8, border: "none", background: "transparent", color: "#6b7280", fontSize: 13, cursor: "pointer", textAlign: "left" }}>
                 <LogOut size={18} />
                 <span>Exit Admin</span>
               </button>
@@ -1632,7 +1632,7 @@ export default function App() {
             </button>
             <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
               {showAdminToggle && (
-                <button onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); }} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }}>
+                <button onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); window.dispatchEvent(new CustomEvent("openAdmin")); }} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }}>
                   <Shield size={20} />
                 </button>
               )}
